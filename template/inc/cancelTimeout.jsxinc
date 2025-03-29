@@ -1,0 +1,10 @@
+var cancelTimeout =
+  app.version > 14
+    ? function (id) {
+      app.cancelTimeout(id);
+    }
+    : function (id) {
+      app.cancelTask(id);
+    };
+
+export default cancelTimeout;

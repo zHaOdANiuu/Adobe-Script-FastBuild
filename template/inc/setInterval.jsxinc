@@ -1,0 +1,5 @@
+function setInterval(handler, timeout) {
+  return app.scheduleTask(uneval(handler) + '()', timeout || 0, true);
+}
+
+export default setInterval;

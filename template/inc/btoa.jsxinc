@@ -1,0 +1,32 @@
+var btoa = (function (lut) {
+  return function (str) {
+    var chunk = 0;
+    var result = [];
+    for (var i = 0, l = str.length; i < l; i += 3) {
+      chunk = str.charCodeAt(i) & 0xFF;
+      chunk = chunk << 8;
+      chunk |= str.charCodeAt(i + 1) & 0xFF;
+      chunk = chunk << 8;
+      chunk |= str.charCodeAt(i + 2) & 0xFF;
+      var partialEnd = 3 - (l - i);
+      var num6bits = 4;
+      if (partialEnd == 2) {
+        num6bits = 2;
+      } else if (partialEnd == 1) {
+        num6bits = 3;
+      }
+      for (var j = 0; j < num6bits; ++j) {
+        result.push(lut.charAt((chunk & 0xFC0000) >> 18))
+        chunk = chunk << 6;
+      }
+      if (partialEnd < 3) {
+        for (var j = 0; j < partialEnd; ++j) {
+          result.push('=');
+        }
+      }
+    }
+    return result.join("");
+  }
+}("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"));
+
+export default btoa;

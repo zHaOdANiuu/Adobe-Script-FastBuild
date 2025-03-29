@@ -1,0 +1,13 @@
+{
+  "type": "module",
+  "scripts": {
+    "build": "set NODE_ENV=production && rolldown -c",
+    "dev": "set NODE_ENV=development && rolldown -c E:/AdobeScript/template/rolldown.config.js -w"
+  },
+  "devDependencies": {
+    "@rollup/plugin-typescript": "workspace:*",
+    "rolldown": "workspace:*",
+    "types-for-adobe": "workspace:*",
+    "typescript": "workspace:*"
+  }
+}
