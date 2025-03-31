@@ -1,10 +1,18 @@
 {
   "name": "estkbuild",
   "description": "Adobe Script Fast Build",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
   "author": "赵大牛",
   "type": "module",
+  "homepage": "https://github.com/zHaOdANiuu",
+  "keywords": [
+    "adobe",
+    "estk",
+    "extendscript",
+    "rolldown",
+    "fastbuild"
+  ],
   "scripts": {
     "test": "node ./index.js create tests -t ae"
   },
