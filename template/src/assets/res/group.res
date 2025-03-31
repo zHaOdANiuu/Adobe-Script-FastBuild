@@ -1,1 +1,0 @@
-group {alignChildren:['fill','fill']}

@@ -1,1 +1,0 @@
-panel{margins:0,spacing:0,alignChildren:['fill','fill']}

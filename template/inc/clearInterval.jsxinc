@@ -1,5 +1,0 @@
-function clearInterval(id) {
-  app.cancelTask(id);
-}
-
-export default clearInterval;
