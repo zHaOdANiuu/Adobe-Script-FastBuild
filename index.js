@@ -35,7 +35,20 @@ const build = (dirUrl, rootPath) => {
     })
 }
 
-const cli = cac('adobe-script-fast-build')
+const createProject = (p, t) => {
+  fs.mkdirSync(p)
+  switch (t) {
+    case 'ae':
+      build(baseUrl + 'template-ae', p)
+      break
+    case 'pr':
+    case 'ps':
+    case 'ai':
+    case 'an':
+      console.log('Not supported yet')
+      break
+  }
+}
 const actionCreateCallback = (dir, options) => {
   console.log(String.raw`Adobe Script Fast Build
 ███████╗███████╗████████╗██╗  ██╗██████╗ ██╗   ██╗██╗██╗     ██████╗ 
@@ -57,27 +70,20 @@ const actionCreateCallback = (dir, options) => {
           console.log('Aborted')
         } else {
           fs.rmSync(fullPath, { recursive: true, force: true })
+          createProject(fullPath, options.template)
         }
         rl.close()
       })
-    }
-    fs.mkdirSync(fullPath)
-    switch (options.t) {
-      case 'ae':
-        build(baseUrl + 'template-ae', fullPath)
-        break
-      case 'pr':
-      case 'ps':
-      case 'ai':
-      case 'an':
-        console.log('Not supported yet')
-        break
+    } else {
+      createProject(fullPath, options.template)
     }
   } catch (error) {
     console.error(error)
+    rl.close()
   }
 }
 
+const cli = cac('adobe-script-fast-build')
 cli
   .command('create <dir>', 'create a new project')
   .option('-t, --template <template>', 'specify a template')
