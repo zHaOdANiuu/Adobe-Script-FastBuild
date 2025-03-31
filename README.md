@@ -8,7 +8,7 @@ estk+rolldown
 
 ## app
 - App 预览
-[](./public/app.png)
+![](./public/app.png)
 
 ## install
 npm
