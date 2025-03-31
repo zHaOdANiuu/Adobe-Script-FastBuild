@@ -1,19 +1,24 @@
 {
-  "name": "adobe-script-fast-build",
+  "name": "estkbuild",
   "description": "Adobe Script Fast Build",
   "version": "0.0.1",
   "license": "MIT",
   "author": "赵大牛",
   "type": "module",
   "scripts": {
-    "test": ""
+    "test": "node ./index.js create tests -t ae"
   },
   "bin": {
-    "estk-create": "./index.js"
+    "estkbuild": "./index.js"
   },
   "files": [
     "index.js",
     "LICENSE",
+    "package.json",
+    "pnpm-lock.yaml",
     "README.md"
-  ]
+  ],
+  "dependencies": {
+    "cac": "^6.7.14"
+  }
 }
