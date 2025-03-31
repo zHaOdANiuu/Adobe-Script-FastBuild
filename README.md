@@ -7,10 +7,8 @@ estk+rolldown
 然后使用命令行创建项目即可.[link](https://github.com/zHaOdANiuu/AdobeScriptTemplate)
 
 ## app
-<video width="320" height="240" controls>
-  <source src="public/app.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+- App 预览
+[](./public/app.png)
 
 ## install
 npm
