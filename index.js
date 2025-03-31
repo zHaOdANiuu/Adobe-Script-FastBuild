@@ -45,32 +45,36 @@ const actionCreateCallback = (dir, options) => {
 ███████╗███████║   ██║   ██║  ██╗██████╔╝╚██████╔╝██║███████╗██████╔╝
 ╚══════╝╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═════╝  ╚═════╝ ╚═╝╚══════╝╚═════╝`)
   const fullPath = path.resolve(dir)
-  if (fs.existsSync(fullPath)) {
-    console.log('The directory already exists, do you want to delete it?')
-    const rl = readline.createInterface({
-      input: process.stdin,
-      output: process.stdout
-    })
-    rl.question('Enter y to confirm, and vice versa.(y/n)', answer => {
-      if (answer.toLowerCase() === 'n') {
-        console.log('Aborted')
-      } else {
-        fs.rmSync(fullPath, { recursive: true, force: true })
-      }
-      rl.close()
-    })
-  }
-  fs.mkdirSync(fullPath)
-  switch (options.t) {
-    case 'ae':
-      build(baseUrl + 'template-ae', fullPath)
-      break
-    case 'pr':
-    case 'ps':
-    case 'ai':
-    case 'an':
-      console.log('Not supported yet')
-      break
+  try {
+    if (fs.existsSync(fullPath)) {
+      console.log('The directory already exists, do you want to delete it?')
+      const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout
+      })
+      rl.question('Enter y to confirm, and vice versa.(y/n)', answer => {
+        if (answer.toLowerCase() === 'n') {
+          console.log('Aborted')
+        } else {
+          fs.rmSync(fullPath, { recursive: true, force: true })
+        }
+        rl.close()
+      })
+    }
+    fs.mkdirSync(fullPath)
+    switch (options.t) {
+      case 'ae':
+        build(baseUrl + 'template-ae', fullPath)
+        break
+      case 'pr':
+      case 'ps':
+      case 'ai':
+      case 'an':
+        console.log('Not supported yet')
+        break
+    }
+  } catch (error) {
+    console.error(error)
   }
 }
 
